@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://b8rtf6umyexij"]
+
+[ext_resource type="Texture2D" uid="uid://bpj2au11bylfn" path="res://unused/asset_7_spritesheet.png" id="1_ig7tw"]
+[ext_resource type="FontFile" uid="uid://bb2pvl8bgbmrw" path="res://assets/Minecraft.ttf" id="2_0xm2m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xm2m"]
+atlas = ExtResource("1_ig7tw")
+region = Rect2(0, 0, 25, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2yge"]
+atlas = ExtResource("1_ig7tw")
+region = Rect2(25, 0, 25, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bvp3"]
+atlas = ExtResource("1_ig7tw")
+region = Rect2(50, 0, 25, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ms6k5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xm2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2yge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bvp3")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="week1" type="Node2D" unique_id=1520775463]
+
+[node name="animated_sprite" type="AnimatedSprite2D" parent="." unique_id=1556981161]
+position = Vector2(18, 0)
+sprite_frames = SubResource("SpriteFrames_ms6k5")
+autoplay = "default"
+frame_progress = 0.46782303
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2122550595]
+zoom = Vector2(5, 5)
+
+[node name="Label" type="Label" parent="." unique_id=1889950518]
+offset_left = -48.0
+offset_top = -17.0
+offset_right = -5.0
+offset_bottom = 18.0
+theme_override_fonts/font = ExtResource("2_0xm2m")
+text = "Hello,
+World!"

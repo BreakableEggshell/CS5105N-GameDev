@@ -1,18 +1,18 @@
-[gd_scene format=3 uid="uid://b8rtf6umyexij"]
+[gd_scene format=3 uid="uid://60ep2v884puu"]
 
-[ext_resource type="Texture2D" uid="uid://bpj2au11bylfn" path="res://asset_7_spritesheet.png" id="1_ig7tw"]
-[ext_resource type="FontFile" uid="uid://bb2pvl8bgbmrw" path="res://Minecraft.ttf" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://bpj2au11bylfn" path="res://unused/asset_7_spritesheet.png" id="1_cxoaf"]
+[ext_resource type="FontFile" uid="uid://bb2pvl8bgbmrw" path="res://assets/Minecraft.ttf" id="2_upqha"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0xm2m"]
-atlas = ExtResource("1_ig7tw")
+atlas = ExtResource("1_cxoaf")
 region = Rect2(0, 0, 25, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h2yge"]
-atlas = ExtResource("1_ig7tw")
+atlas = ExtResource("1_cxoaf")
 region = Rect2(25, 0, 25, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1bvp3"]
-atlas = ExtResource("1_ig7tw")
+atlas = ExtResource("1_cxoaf")
 region = Rect2(50, 0, 25, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ms6k5"]
@@ -32,7 +32,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="main" type="Node2D" unique_id=1520775463]
+[node name="week1" type="Node2D" unique_id=1520775463]
 
 [node name="animated_sprite" type="AnimatedSprite2D" parent="." unique_id=1556981161]
 position = Vector2(18, 0)
@@ -48,6 +48,6 @@ offset_left = -48.0
 offset_top = -17.0
 offset_right = -5.0
 offset_bottom = 18.0
-theme_override_fonts/font = ExtResource("2_0xm2m")
+theme_override_fonts/font = ExtResource("2_upqha")
 text = "Hello,
 World!"
