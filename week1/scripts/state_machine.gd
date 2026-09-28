@@ -22,7 +22,6 @@ func _ready() -> void:
 		current_state.enter()
 	else:
 		push_warning("StateMachine has no states")
-	
 
 func _unhandled_input(event: InputEvent) -> void:
 	if current_state:

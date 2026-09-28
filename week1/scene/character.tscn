@@ -145,7 +145,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_3fky7")
 }],
 "loop": 1,
-"name": &"walking",
+"name": &"walk",
 "speed": 7.0
 }]
 
@@ -156,9 +156,8 @@ size = Vector2(12, 11)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=708405118]
 sprite_frames = SubResource("SpriteFrames_2ypnl")
-animation = &"fall"
+animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.9543971
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1794266725]
 position = Vector2(0, 6.5)

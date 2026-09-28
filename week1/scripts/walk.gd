@@ -4,9 +4,13 @@ const SPEED := 200.0
 
 func enter() -> void:
 	print("Walk State")
+	sprite.play("walk")
 
-func physics_update(_delta: float) -> void:
+func physics_update(delta: float) -> void:
 	var dir:= Input.get_axis("move_left", "move_right")
+	face(dir)
+	
+	actor.velocity.y += gravity * delta
 	actor.velocity.x = dir * SPEED
 	actor.move_and_slide()
 	if not actor.is_on_floor():

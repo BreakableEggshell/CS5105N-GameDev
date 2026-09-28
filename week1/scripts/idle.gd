@@ -1,9 +1,11 @@
 extends State
 
 func enter() -> void:
+	sprite.play("idle")
 	print("Idle State")
 
 func physics_update(delta: float) -> void:
+	actor.velocity.y += gravity * delta
 	actor.velocity.x = move_toward(actor.velocity.x, 0.0, 1000.0 * delta)
 	actor.move_and_slide()
 	
