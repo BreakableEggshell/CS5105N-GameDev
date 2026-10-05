@@ -46,8 +46,9 @@ _data = {
 
 [node name="Potion" type="Area2D" unique_id=1121713623]
 scale = Vector2(0.8, 0.8)
+collision_mask = 5
 script = ExtResource("1_4jfpn")
-speed = 250.0
+hang_time = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1631526766]
 rotation = -6.2831855
