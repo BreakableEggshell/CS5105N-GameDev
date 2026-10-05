@@ -8,13 +8,32 @@ signal died
 ## Seconds of invincibility after being hit.
 @export var invincible_time := 1.0
 
+## How far (in pixels) below the bottom of the level's tiles the player can fall before dying.
+@export var fall_death_margin := 48.0
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var health := 0
 var _invincible_until_msec := 0
+var _kill_y := INF
 
 func _ready() -> void:
 	health = max_health
+	var tilemap := get_parent().get_node_or_null("TileMapLayer") as TileMapLayer
+	if tilemap:
+		var bottom_row := tilemap.get_used_rect().end.y
+		var bottom := tilemap.to_global(tilemap.map_to_local(Vector2i(0, bottom_row))).y
+		_kill_y = bottom + fall_death_margin
+
+func _physics_process(_delta: float) -> void:
+	if health > 0 and global_position.y > _kill_y:
+		fall_out()
+
+## Instantly lose all health (e.g. fell out of the level).
+func fall_out() -> void:
+	health = 0
+	health_changed.emit(health)
+	_die()
 
 func is_invincible() -> bool:
 	return Time.get_ticks_msec() < _invincible_until_msec

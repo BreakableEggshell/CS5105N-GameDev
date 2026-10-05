@@ -23,3 +23,17 @@ briefly, then arcs down under gravity, and on impact it shatters into
 `CPUParticles2D` shards and splash. Throws have a short cooldown.
 
 ![alt text](/readme_screenshots/week2_throw.gif)
+
+## Week 3
+
+Added a HUD that shows the health and potion throwing cooldown.
+
+Added a slime enemy that patrols back and forth, turning around at walls and
+floor edges (using a `RayCast2D`). Touching it hurts the player, and it dies
+after 3 potion hits. Falling out of the level also kills the player and
+restarts the level.
+
+Added a chest that opens when touched and loads the next level, plus 2 new
+levels for a total of 3.
+
+![alt text](/readme_screenshots/week3_levels.gif)
