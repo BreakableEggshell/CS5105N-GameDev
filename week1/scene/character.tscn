@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bwjoqn54sty6e" path="res://scripts/jump.gd" id="5_p3t0x"]
 [ext_resource type="Script" uid="uid://bd8wl1lfn05pf" path="res://scripts/fall.gd" id="6_mbevu"]
 [ext_resource type="Script" uid="uid://bpohp3fklacng" path="res://scripts/throw.gd" id="7_throw"]
+[ext_resource type="Script" uid="uid://c2vlr8bdot2jt" path="res://scripts/player.gd" id="8_player"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p3t0x"]
 atlas = ExtResource("1_3x35j")
@@ -154,6 +155,7 @@ animations = [{
 size = Vector2(12, 11)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1548181906 groups=["player"]]
+script = ExtResource("8_player")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=708405118]
 sprite_frames = SubResource("SpriteFrames_2ypnl")

@@ -11,6 +11,10 @@ var _ready_at_msec := 0
 func is_off_cooldown() -> bool:
 	return Time.get_ticks_msec() >= _ready_at_msec
 
+## Seconds left until the next throw (0 when ready).
+func cooldown_remaining() -> float:
+	return maxf(_ready_at_msec - Time.get_ticks_msec(), 0) / 1000.0
+
 func enter() -> void:
 	print("Throw State")
 	_ready_at_msec = Time.get_ticks_msec() + int(cooldown * 1000.0)

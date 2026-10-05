@@ -10,6 +10,8 @@ const SMASH := preload("res://scene/potion_smash.tscn")
 @export var gravity_scale := 0.5
 ## Fraction of horizontal speed kept per second (1 = no air drag).
 @export_range(0.0, 1.0) var air_drag := 0.8
+## Damage dealt to enemies on hit.
+@export var damage := 1
 ## Safety net: free the potion if it never hits anything (e.g. falls off the map).
 @export var max_lifetime := 5.0
 
@@ -36,6 +38,8 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body: Node) -> void:
 	if smashed or body.is_in_group("player"):
 		return
+	if body.is_in_group("enemy"):
+		body.take_damage(damage)
 	smash()
 
 func smash() -> void:

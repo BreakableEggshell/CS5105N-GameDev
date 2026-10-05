@@ -1,6 +1,6 @@
 extends State
 
-const JUMP_VELOCITY := -450.0
+const JUMP_VELOCITY := -350.0
 const AIR_SPEED := 200.0
 
 func enter() -> void:

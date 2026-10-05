@@ -2,6 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://d0a7ynyvpsxxr" path="res://scene/character.tscn" id="1_itxqv"]
 [ext_resource type="Texture2D" uid="uid://b0bdedae7h7wb" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_v0l8b"]
+[ext_resource type="PackedScene" uid="uid://bm2oh8egcv15e" path="res://scene/enemy_slime.tscn" id="2_wp4xf"]
+[ext_resource type="PackedScene" path="res://scene/hud.tscn" id="3_hud"]
+[ext_resource type="PackedScene" path="res://scene/chest.tscn" id="4_chest"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2ypnl"]
 
@@ -147,6 +150,9 @@ position = Vector2(-2, 37)
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=906493967]
 zoom = Vector2(4, 4)
 
+[node name="enemy_slime" parent="." unique_id=1687570845 instance=ExtResource("2_wp4xf")]
+position = Vector2(216, 36)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1811043334]
 position = Vector2(65, 66)
 
@@ -154,5 +160,11 @@ position = Vector2(65, 66)
 shape = SubResource("WorldBoundaryShape2D_2ypnl")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=475294037]
-tile_map_data = PackedByteArray("AAD8/wMAAAAAAAAAAAD9/wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAACAAMAAAAJAAAAAAADAAMAAAAKAAAAAAAEAAMAAAALAAAAAAAGAAAAAAAAAAEAAAAGAP//AAAAAAEAAAAGAP7/AAAAAAEAAAAGAP3/AAAAAAEAAAAGAPz/AAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAFAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAADAP7/AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD8/wMAAAAAAAAAAAD9/wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAJAAMAAAAAAAEAAAAKAAMAAAAAAAEAAAACAAMAAAAJAAAAAAADAAMAAAAKAAAAAAAEAAMAAAALAAAAAAAGAAAAAAAAAAEAAAAGAP//AAAAAAEAAAAGAP7/AAAAAAEAAAAGAP3/AAAAAAEAAAAGAPz/AAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAFAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAADAP7/AAAAAAAAAAALAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAANAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAQAAIAAAAAAAAAAAARAAIAAAAAAAAAAAATAAEAAAAAAAAAAAASAAEAAAAAAAAAAAAUAAEAAAAAAAAAAAAKAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAALAAMAAAAAAAEAAAAPAAMAAAAAAAEAAAAQAAMAAAAAAAEAAAARAAMAAAAAAAEAAAASAAMAAAAAAAEAAAATAAMAAAAAAAEAAAAUAAMAAAAAAAEAAAAUAAIAAAAAAAEAAAATAAIAAAAAAAEAAAASAAIAAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_itxqv")
+
+[node name="Chest" parent="." instance=ExtResource("4_chest")]
+position = Vector2(312, 16)
+next_level = "res://scene/level2.tscn"
+
+[node name="HUD" parent="." instance=ExtResource("3_hud")]
