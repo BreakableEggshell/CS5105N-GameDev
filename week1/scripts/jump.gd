@@ -20,5 +20,7 @@ func physics_update(delta: float) -> void:
 	
 	actor.move_and_slide()
 	
-	if actor.velocity.y >= 0.0:
+	if wants_throw():
+		transitioned.emit("throw")
+	elif actor.velocity.y >= 0.0:
 		transitioned.emit("fall")

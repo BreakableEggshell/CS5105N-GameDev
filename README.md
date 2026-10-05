@@ -1,6 +1,6 @@
 # CS5105N Game Dev Requirements
 
-## Game Idea
+## Game Idea: Potion Knight
 
 A 2D hack-and-slash platformer. Genre: hack and slash / 2D platformer.
 

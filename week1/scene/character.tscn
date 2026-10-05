@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cf6tp40oili2l" path="res://scripts/walk.gd" id="5_7v2w7"]
 [ext_resource type="Script" uid="uid://bwjoqn54sty6e" path="res://scripts/jump.gd" id="5_p3t0x"]
 [ext_resource type="Script" uid="uid://bd8wl1lfn05pf" path="res://scripts/fall.gd" id="6_mbevu"]
+[ext_resource type="Script" uid="uid://bpohp3fklacng" path="res://scripts/throw.gd" id="7_throw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p3t0x"]
 atlas = ExtResource("1_3x35j")
@@ -27,10 +28,6 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("1_3x35j")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mbevu"]
-atlas = ExtResource("1_3x35j")
-region = Rect2(64, 160, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_wdeb7"]
 atlas = ExtResource("1_3x35j")
 region = Rect2(96, 160, 32, 32)
@@ -42,6 +39,10 @@ region = Rect2(128, 160, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_t17xi"]
 atlas = ExtResource("1_3x35j")
 region = Rect2(160, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbevu"]
+atlas = ExtResource("1_3x35j")
+region = Rect2(64, 160, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_beyxi"]
 atlas = ExtResource("1_3x35j")
@@ -104,9 +105,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mbevu")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_wdeb7")
 }, {
 "duration": 1.0,
@@ -114,6 +112,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t17xi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbevu")
 }],
 "loop": 1,
 "name": &"jump",
@@ -152,19 +153,21 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ypnl"]
 size = Vector2(12, 11)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1548181906]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1548181906 groups=["player"]]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=708405118]
 sprite_frames = SubResource("SpriteFrames_2ypnl")
-animation = &"walk"
+animation = &"jump"
 autoplay = "idle"
+frame_progress = 0.08541145
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1794266725]
 position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_2ypnl")
 
-[node name="StateMachine" type="Node" parent="." unique_id=994996802]
+[node name="StateMachine" type="Node" parent="." unique_id=994996802 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_p3t0x")
+initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=285255248]
 script = ExtResource("4_6k5wm")
@@ -177,3 +180,6 @@ script = ExtResource("5_p3t0x")
 
 [node name="Fall" type="Node" parent="StateMachine" unique_id=291268874]
 script = ExtResource("6_mbevu")
+
+[node name="Throw" type="Node" parent="StateMachine" unique_id=754498347]
+script = ExtResource("7_throw")

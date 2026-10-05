@@ -14,7 +14,9 @@ func physics_update(delta: float) -> void:
 	actor.velocity.x = Input.get_axis("move_left", "move_right") * AIR_SPEED
 	actor.move_and_slide()
 	
-	if actor.is_on_floor():
+	if wants_throw():
+		transitioned.emit("throw")
+	elif actor.is_on_floor():
 		if Input.get_axis("move_left", "move_right") != 0.0:
 			transitioned.emit("walk")
 		else:

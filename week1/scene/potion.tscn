@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c3882ngu76075"]
 
+[ext_resource type="Script" uid="uid://cyp5jlbfdl27b" path="res://scripts/potion.gd" id="1_4jfpn"]
 [ext_resource type="Texture2D" uid="uid://4s6jfg12nntu" path="res://assets/green_round.png" id="1_b55sf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b55sf"]
@@ -43,14 +44,19 @@ _data = {
 &"spin": SubResource("Animation_4jfpn")
 }
 
-[node name="Potion" type="StaticBody2D" unique_id=1604772408]
+[node name="Potion" type="Area2D" unique_id=1121713623]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_4jfpn")
+speed = 250.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1631526766]
 rotation = -6.2831855
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_b55sf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1712616441]
 position = Vector2(0, 1)
+scale = Vector2(0.8, 0.8)
 shape = SubResource("CircleShape2D_b55sf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1119407344]

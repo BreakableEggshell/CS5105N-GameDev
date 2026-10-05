@@ -1,6 +1,6 @@
 extends State
 
-const SPEED := 200.0
+const SPEED := 150.0
 
 func enter() -> void:
 	print("Walk State")
@@ -17,5 +17,7 @@ func physics_update(delta: float) -> void:
 		transitioned.emit("fall")
 	elif Input.is_action_just_pressed("move_jump"):
 		transitioned.emit("jump")
+	elif wants_throw():
+		transitioned.emit("throw")
 	elif dir == 0.0:
 		transitioned.emit("idle")

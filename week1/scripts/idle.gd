@@ -15,3 +15,5 @@ func physics_update(delta: float) -> void:
 		transitioned.emit("fall")
 	elif Input.is_action_just_pressed("move_jump"):
 		transitioned.emit("jump")
+	elif wants_throw():
+		transitioned.emit("throw")
