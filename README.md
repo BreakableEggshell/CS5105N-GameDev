@@ -18,8 +18,7 @@ Added a knight `CharacterBody2D` with idle, walk, jump, and fall animations,
 controlled by a `StateMachine` node with one child node per state. Built a
 small test level with a `TileMapLayer` and a `Camera2D` that follows the player.
 
-Added a `Throw` state (E key) that throws a potion forward. The potion flies
-briefly, then arcs down under gravity, and on impact it shatters into
-`CPUParticles2D` shards and splash. Throws have a short cooldown.
+Added a `Throw` state (E key) that throws a potion forward. The potion flies,
+and on impact it shatters into `CPUParticles2D` shards and splash.
 
 ![alt text](/readme_screenshots/week2_throw.gif)
