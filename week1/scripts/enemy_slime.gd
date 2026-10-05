@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const DEATH_PARTICLES := preload("res://scene/slime_death.tscn")
+
 @export var speed := 30.0
 @export var max_health := 3
 ## Damage dealt to the player on touch (1 = half a heart).
@@ -56,6 +58,9 @@ func _die() -> void:
 	set_deferred("collision_layer", 0)
 	hitbox.set_deferred("monitoring", false)
 	sprite.modulate = Color.WHITE
+	var particles := DEATH_PARTICLES.instantiate()
+	particles.position = position + Vector2(0, 8)  # same parent as the slime
+	get_parent().add_child.call_deferred(particles)
 	sprite.play("death")
 	await sprite.animation_finished
 	queue_free()
