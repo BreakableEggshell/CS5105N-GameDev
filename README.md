@@ -55,13 +55,48 @@ starts.
 
 ![alt text](/readme_screenshots/week5_menus.gif)
 
+## Week 6
+
+Added a mushroom enemy driven by a finite state machine (`enum Mode` +
+`match` in `enemy_mushroom.gd`):
+
+- **Patrol**: walks back and forth, turning at walls and ledges (`RayCast2D`).
+- **Attack**: when it spots the player, it winds up, then launches itself
+  forward.
+- **Stun**: dizzy for 0.5 seconds after launching, then returns to Patrol.
+- **Dead**: plays its death animation, then crumbles into dust.
+
+Detection uses a raycast line-of-sight check: the player must be in front of
+the mushroom, within range, and not behind a wall. Touching it hurts the player
+and knocks them back. It has 3 health, and if hit from behind it turns around
+to face the player.
+
+Also added a potion inventory with potion sacks, knockback when the player is
+hurt, and a restart (R) option.
+
+![alt text](/readme_screenshots/week6_mushroom.gif)
+
+### AI-assisted work
+
+The mushroom's FSM script was drafted by an AI coding assistant (Claude Code)
+from my description of the behavior. Changes made after testing:
+
+- **Fixed detection**: the line-of-sight ray aimed above the player's hitbox, so
+  the mushroom never spotted the player. It now aims at the hitbox centers.
+- **Added an attack cooldown**: it re-attacked the instant its stun ended, so it
+  now waits 1 second before it can spot the player again.
+- **Longer wind-up**: the launch came too fast to react to, so it now holds its
+  wind-up pose for an extra 0.4 seconds.
+- **Turns when hit from behind**: added so it can't be attacked freely from
+  behind.
+
 ## Credits
 
 **Music**
 - Mexico Loop by Tim Beek
 
 **Sound Effects**
-- Chest open, enemy death, and HP recovery sounds from [Sound Effect Lab](https://soundeffect-lab.info/)
+- Chest open, enemy death, HP recovery, potion throw, and glass break sounds from [Sound Effect Lab](https://soundeffect-lab.info/)
 
 **Sprites**
 - [Brackeys' Platformer Bundle](https://brackeysgames.itch.io/brackeys-platformer-bundle) by Brackeys (CC0)
@@ -70,7 +105,8 @@ starts.
 - [90 Free 16x16 Pixel Art Potions](https://alexkovacsart.itch.io/90-free-16x16-pixel-art-potions) by alexkovacsart
 - [Animated HUD Pixel RPG](https://snoblin.itch.io/animated-hud-pixel-rpg) (hearts) by Snoblin
 - [Sprout Lands Asset Pack](https://cupnooble.itch.io/sprout-lands-asset-pack) (chest) by Cup Nooble
-- Menu buttons and pause/play icon made for this project
+- [Forest Monsters Pixel Art](https://monopixelart.itch.io/forest-monsters-pixel-art) (mushroom enemy) by MonoPixelArt
+- Menu buttons, pause/play icon, and potion sack made for this project
 
 **Font**
 - [Pixel Operator](https://www.dafont.com/pixel-operator.font) by Jayvee Enaguas (HarvettFox96), included in the Brackeys bundle

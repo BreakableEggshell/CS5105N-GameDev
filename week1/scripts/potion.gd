@@ -42,7 +42,9 @@ func _on_body_entered(body: Node) -> void:
 	if smashed or body.is_in_group("player"):
 		return
 	if body.is_in_group("enemy"):
-		body.take_damage(damage)
+		# Report a point back along the flight path, so the enemy knows which side it was hit from.
+		var hit_from := global_position - Vector2(signf(velocity.x), 0) * 32.0
+		body.take_damage(damage, hit_from)
 	smash()
 
 func smash() -> void:

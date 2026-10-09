@@ -42,7 +42,8 @@ func _apply_direction() -> void:
 	sprite.flip_h = direction < 0.0
 	edge_ray.position.x = absf(edge_ray.position.x) * direction
 
-func take_damage(amount: int) -> void:
+## `_from_position` (where the hit came from) is accepted for consistency with other enemies but unused.
+func take_damage(amount: int, _from_position := Vector2.INF) -> void:
 	if health <= 0:
 		return
 	health -= amount

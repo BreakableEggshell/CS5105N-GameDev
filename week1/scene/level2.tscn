@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" path="res://scene/background.tscn" id="9_bg"]
 [ext_resource type="PackedScene" path="res://scene/heart_pickup.tscn" id="10_heart"]
 [ext_resource type="PackedScene" path="res://scene/sack_pickup.tscn" id="11_sack"]
+[ext_resource type="PackedScene" path="res://scene/enemy_mushroom.tscn" id="12_mushroom"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wp4xf"]
 texture = ExtResource("1_yilmc")
@@ -192,3 +193,6 @@ position = Vector2(104, -10)
 [node name="SackPickup" parent="." instance=ExtResource("11_sack")]
 position = Vector2(72, 34)
 potions_per_enemy = 5
+
+[node name="EnemyMushroom" parent="." instance=ExtResource("12_mushroom")]
+position = Vector2(232, 36)
