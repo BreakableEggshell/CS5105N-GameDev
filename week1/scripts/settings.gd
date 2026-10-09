@@ -9,6 +9,7 @@ const REBINDABLE := {
 	&"move_right": "Move Right",
 	&"move_jump": "Jump",
 	&"throw": "Throw",
+	&"restart": "Restart",
 }
 
 var music_volume := 1.0
@@ -25,6 +26,7 @@ func _ready() -> void:
 		_base_db[bus] = AudioServer.get_bus_volume_db(AudioServer.get_bus_index(bus))
 	for action in REBINDABLE:
 		_default_keys[action] = get_keys(action)
+	_add_menu_keys()
 	load_settings()
 	_apply_volume(&"Music", music_volume)
 	_apply_volume(&"SFX", sfx_volume)
@@ -41,6 +43,13 @@ func set_sfx_volume(value: float) -> void:
 func set_fullscreen(value: bool) -> void:
 	fullscreen = value
 	_apply_fullscreen()
+
+## Let W/S move up and down in menus, alongside Godot's default arrow keys and gamepad.
+func _add_menu_keys() -> void:
+	for pair in [[&"ui_up", KEY_W], [&"ui_down", KEY_S]]:
+		var event := InputEventKey.new()
+		event.physical_keycode = pair[1]
+		InputMap.action_add_event(pair[0], event)
 
 ## Physical keycodes currently bound to an action.
 func get_keys(action: StringName) -> Array[int]:

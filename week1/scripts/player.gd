@@ -20,6 +20,8 @@ const SAFE_GROUND_REACH := 12.0
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var health := 0
+## -1 or 1: which way the last hit knocked the player (read by the Hurt state).
+var knockback_direction := 1.0
 var _invincible_until_msec := 0
 var _kill_y := INF
 ## Last position where the player stood on the ground; where they respawn after falling out.
@@ -28,6 +30,8 @@ var _safe_position := Vector2.ZERO
 func _ready() -> void:
 	health = max_health
 	_safe_position = global_position
+	Inventory.begin_level()
+	Tutorial.on_level_started(get_parent().scene_file_path)
 	var tilemap := get_parent().get_node_or_null("TileMapLayer") as TileMapLayer
 	if tilemap:
 		var bottom_row := tilemap.get_used_rect().end.y
@@ -69,7 +73,8 @@ func fall_out() -> void:
 func is_invincible() -> bool:
 	return Time.get_ticks_msec() < _invincible_until_msec
 
-func take_damage(amount: int) -> void:
+## `from_position` is where the hit came from; if given, the player is knocked away from it.
+func take_damage(amount: int, from_position := Vector2.INF) -> void:
 	if health <= 0 or is_invincible():
 		return
 	health = maxi(health - amount, 0)
@@ -77,8 +82,13 @@ func take_damage(amount: int) -> void:
 	health_changed.emit(health)
 	if health == 0:
 		_die()
-	else:
-		_flash()
+		return
+	_flash()
+	if from_position != Vector2.INF:
+		var away := signf(global_position.x - from_position.x)
+		# Directly on top of the source: knock back opposite to the way we're facing.
+		knockback_direction = away if away != 0.0 else (1.0 if sprite.flip_h else -1.0)
+		$StateMachine.change_state(&"hurt")
 
 ## Restores health, capped at max_health. Returns false if already full (nothing healed).
 func heal(amount: int) -> bool:
@@ -98,4 +108,6 @@ func _die() -> void:
 	$StateMachine.process_mode = Node.PROCESS_MODE_DISABLED
 	sprite.modulate = Color(1, 0.4, 0.4)
 	await get_tree().create_timer(1.0).timeout
+	# Restart the level with the potions the player had when it began.
+	Inventory.restore_level_start()
 	get_tree().reload_current_scene()

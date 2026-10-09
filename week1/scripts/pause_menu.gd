@@ -11,6 +11,7 @@ const PRESSED_TINT := Color(0.8, 0.8, 0.8)
 @onready var toggle_button: TextureButton = %ToggleButton
 @onready var menu: Control = %Menu
 @onready var options_button: TextureButton = %OptionsButton
+@onready var restart_button: BaseButton = %RestartButton
 @onready var exit_button: TextureButton = %ExitButton
 @onready var options_menu: Control = $OptionsMenu
 
@@ -21,9 +22,10 @@ func _ready() -> void:
 	get_tree().paused = false
 	toggle_button.pressed.connect(toggle_pause)
 	exit_button.pressed.connect(_on_exit_pressed)
+	restart_button.pressed.connect(restart_level)
 	options_button.pressed.connect(_on_options_pressed)
 	options_menu.closed.connect(_on_options_closed)
-	for button in [toggle_button, options_button, exit_button]:
+	for button in [toggle_button, options_button, restart_button, exit_button]:
 		button.mouse_entered.connect(_set_tint.bind(button, HOVER_TINT))
 		button.mouse_exited.connect(_set_tint.bind(button, Color.WHITE))
 		button.focus_entered.connect(_set_tint.bind(button, HOVER_TINT))
@@ -36,6 +38,16 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		toggle_pause()
 		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("restart") and not options_menu.visible:
+		# Mark handled first: restarting removes this menu from the tree.
+		get_viewport().set_input_as_handled()
+		restart_level()
+
+## Restart the current level with the potions the player had when it began.
+func restart_level() -> void:
+	get_tree().paused = false
+	Inventory.restore_level_start()
+	get_tree().reload_current_scene()
 
 func toggle_pause() -> void:
 	if options_menu.visible:
@@ -52,7 +64,7 @@ func _update() -> void:
 	else:
 		get_viewport().gui_release_focus()
 
-func _set_tint(button: TextureButton, tint: Color) -> void:
+func _set_tint(button: BaseButton, tint: Color) -> void:
 	button.modulate = tint
 
 func _on_options_pressed() -> void:

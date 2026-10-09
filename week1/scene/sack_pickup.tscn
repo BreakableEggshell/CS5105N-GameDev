@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/sack_pickup.gd" id="1_sack"]
+[ext_resource type="Texture2D" uid="uid://hiqp0nx8fpsb" path="res://assets/sack.png" id="2_sack"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sack"]
+size = Vector2(12, 16)
+
+[node name="SackPickup" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_sack")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_sack")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sack")

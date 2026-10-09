@@ -1,6 +1,7 @@
 extends State
 
-const AIR_SPEED := 200.0
+## Air movement speed comes from walk.gd (AIR_SPEED, a bit faster than walking).
+const Walk := preload("res://scripts/walk.gd")
 const LANDING_DUST := preload("res://scene/landing_dust.tscn")
 ## Offset from the player's origin to their feet.
 const FEET_OFFSET := Vector2(0, 12)
@@ -14,7 +15,7 @@ func physics_update(delta: float) -> void:
 	face(dir)
 	
 	actor.velocity.y += gravity * delta
-	actor.velocity.x = Input.get_axis("move_left", "move_right") * AIR_SPEED
+	actor.velocity.x = Input.get_axis("move_left", "move_right") * Walk.AIR_SPEED
 	actor.move_and_slide()
 	
 	if wants_throw():

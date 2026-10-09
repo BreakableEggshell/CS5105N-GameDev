@@ -69,6 +69,15 @@ texture_normal = ExtResource("3_options")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="RestartButton" type="Button" parent="Menu/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 28
+text = "RESTART"
+
 [node name="ExitButton" type="TextureButton" parent="Menu/VBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(205, 80)

@@ -25,6 +25,7 @@ func enter() -> void:
 	# Add to the level, not the player, so the potion doesn't move with the player.
 	actor.get_parent().add_child(potion)
 	potion.global_position = actor.global_position + SPAWN_OFFSET * dir
+	Inventory.use_potion()
 	Sfx.play(THROW_SOUND)
 	Tutorial.register_throw()
 

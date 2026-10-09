@@ -26,17 +26,31 @@ position = Vector2(40, 100)
 scale = Vector2(3, 3)
 texture = ExtResource("3_potion")
 
+[node name="PotionCount" type="Label" parent="."]
+offset_left = 70.0
+offset_top = 86.0
+offset_right = 160.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(1, 0.96, 0.88, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.12, 0.22, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 24
+text = "x 0"
+vertical_alignment = 1
+
 [node name="CooldownLabel" type="Label" parent="."]
 visible = false
-offset_left = 68.0
-offset_top = 88.0
-offset_right = 140.0
-offset_bottom = 112.0
+offset_left = 16.0
+offset_top = 126.0
+offset_right = 64.0
+offset_bottom = 148.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("4_font")
 theme_override_font_sizes/font_size = 16
 text = "0.5"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TutorialLabel" type="Label" parent="."]
