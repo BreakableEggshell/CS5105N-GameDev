@@ -23,6 +23,7 @@ Tutorial="*res://scripts/tutorial.gd"
 Inventory="*res://scripts/inventory.gd"
 Transition="*res://scripts/transition.gd"
 Graveyard="*res://scripts/graveyard.gd"
+SaveGame="*res://scripts/save_game.gd"
 
 [display]
 

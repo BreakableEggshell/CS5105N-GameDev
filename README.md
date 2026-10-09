@@ -90,6 +90,30 @@ from my description of the behavior. Changes made after testing:
 - **Turns when hit from behind**: added so it can't be attacked freely from
   behind.
 
+## Week 7
+
+Polish pass on combat and death:
+
+- **Hit-stop**: when the mushroom's headbutt lands, the whole game freezes for a
+  split second (`Engine.time_scale`) before the knockback, so the hit feels
+  heavy.
+- **Death and respawn**: the knight collapses, a tombstone drops in with a
+  tweened bounce where they died, and an iris transition (a circle shader on a
+  `CanvasLayer`) closes in on them. The level reloads and the iris opens again
+  at the level's campfire spawn point.
+- **Tombstones persist**: tombstones from earlier deaths stay in the level across
+  respawns and restarts, until the player reaches the next level.
+- **Tweened feedback**: picking up a potion sack shows a floating "+N" that rises
+  and fades.
+
+![alt text](/readme_screenshots/week7_juice.gif)
+
+Added save/load: the level the player has reached is written to
+`user://savegame.cfg` (`ConfigFile`) every time a level starts, so progress
+persists after closing the game. When a save exists, a **Continue** button
+appears on the title screen and loads the saved level. **Start** begins a new
+game from level 1.
+
 ## Credits
 
 **Music**
@@ -106,7 +130,7 @@ from my description of the behavior. Changes made after testing:
 - [Animated HUD Pixel RPG](https://snoblin.itch.io/animated-hud-pixel-rpg) (hearts) by Snoblin
 - [Sprout Lands Asset Pack](https://cupnooble.itch.io/sprout-lands-asset-pack) (chest) by Cup Nooble
 - [Forest Monsters Pixel Art](https://monopixelart.itch.io/forest-monsters-pixel-art) (mushroom enemy) by MonoPixelArt
-- Menu buttons, pause/play icon, and potion sack made for this project
+- Menu buttons, pause/play icon, potion sack, campfire, and tombstone made for this project
 
 **Font**
 - [Pixel Operator](https://www.dafont.com/pixel-operator.font) by Jayvee Enaguas (HarvettFox96), included in the Brackeys bundle

@@ -39,6 +39,7 @@ func _ready() -> void:
 	_safe_position = global_position
 	Inventory.begin_level()
 	Tutorial.on_level_started(get_parent().scene_file_path)
+	SaveGame.save_level(get_parent().scene_file_path)
 	# Deferred: the level is still adding its own children right now.
 	Graveyard.on_level_started.call_deferred(get_parent())
 	var tilemap := get_parent().get_node_or_null("TileMapLayer") as TileMapLayer
