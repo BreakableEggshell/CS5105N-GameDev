@@ -71,9 +71,11 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+	# Touching hurts; being hit by the headbutt (mid-launch) also gets the impact freeze.
+	var headbutting: bool = mode == Mode.ATTACK and sprite.frame in LAUNCH_FRAMES
 	for body in hitbox.get_overlapping_bodies():
 		if body.is_in_group("player"):
-			body.take_damage(contact_damage, global_position)
+			body.take_damage(contact_damage, global_position, headbutting)
 
 ## True if the player is ahead of us, close, roughly level, and not behind a wall.
 func _sees_player() -> bool:

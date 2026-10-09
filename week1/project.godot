@@ -21,6 +21,8 @@ Sfx="*res://scripts/sfx.gd"
 Settings="*res://scripts/settings.gd"
 Tutorial="*res://scripts/tutorial.gd"
 Inventory="*res://scripts/inventory.gd"
+Transition="*res://scripts/transition.gd"
+Graveyard="*res://scripts/graveyard.gd"
 
 [display]
 

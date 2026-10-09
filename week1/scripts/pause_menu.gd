@@ -35,6 +35,8 @@ func _ready() -> void:
 	_update()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if Transition.closed:
+		return  # mid-transition: ignore pause/restart
 	if event.is_action_pressed("ui_cancel"):
 		toggle_pause()
 		get_viewport().set_input_as_handled()
@@ -43,8 +45,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		restart_level()
 
-## Restart the current level with the potions the player had when it began.
+## Restart the current level: close the iris on the player, then reload (back at the campfire).
 func restart_level() -> void:
+	if Transition.closed:
+		return  # already restarting (or dying)
+	# Freeze the game and hide the menus while the iris closes.
+	get_tree().paused = true
+	menu.hide()
+	options_menu.hide()
+	toggle_button.hide()
+	var player := get_tree().get_first_node_in_group("player") as Node2D
+	var center := player.get_global_transform_with_canvas().origin if player else get_viewport().get_visible_rect().size / 2.0
+	await Transition.iris_out(center)
 	get_tree().paused = false
 	Inventory.restore_level_start()
 	get_tree().reload_current_scene()

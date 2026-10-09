@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" path="res://scene/sack_pickup.tscn" id="8_b5f6u"]
 [ext_resource type="PackedScene" path="res://scene/background.tscn" id="9_bg"]
 [ext_resource type="PackedScene" path="res://scene/heart_pickup.tscn" id="10_heart"]
+[ext_resource type="PackedScene" path="res://scene/campfire.tscn" id="13_campfire"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wp4xf"]
 texture = ExtResource("2_v0l8b")
@@ -172,3 +173,6 @@ position = Vector2(456, -10)
 [node name="SackPickup" type="Area2D" parent="." unique_id=1059558186 instance=ExtResource("8_b5f6u")]
 position = Vector2(8, 34)
 amount = 10
+
+[node name="Campfire" parent="." instance=ExtResource("13_campfire")]
+position = Vector2(-72, 48)

@@ -24,12 +24,17 @@ func _ready() -> void:
 		button.button_up.connect(_set_tint.bind(button, HOVER_TINT))
 	# Lets keyboard players press Enter/Space right away.
 	start_button.grab_focus()
+	# Safety nets in case we arrived mid-hit-stop or mid-iris (e.g. Exit from the pause menu).
+	Engine.time_scale = 1.0
+	if Transition.closed:
+		Transition.iris_in(get_viewport().get_visible_rect().size / 2.0)
 
 func _set_tint(button: TextureButton, tint: Color) -> void:
 	button.modulate = tint
 
 func _on_start_pressed() -> void:
 	Inventory.reset()
+	Graveyard.clear()
 	Tutorial.arm()
 	get_tree().change_scene_to_file(FIRST_LEVEL)
 
