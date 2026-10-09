@@ -2,6 +2,7 @@ extends State
 
 const POTION := preload("res://scene/potion.tscn")
 const SPAWN_OFFSET := Vector2(10.0, 0.0)
+const THROW_SOUND := preload("res://assets/music_sfx/throw.mp3")
 
 ## Seconds before another potion can be thrown.
 @export var cooldown := 0.5
@@ -24,6 +25,9 @@ func enter() -> void:
 	# Add to the level, not the player, so the potion doesn't move with the player.
 	actor.get_parent().add_child(potion)
 	potion.global_position = actor.global_position + SPAWN_OFFSET * dir
+	Inventory.use_potion()
+	Sfx.play(THROW_SOUND)
+	Tutorial.register_throw()
 
 func physics_update(delta: float) -> void:
 	actor.velocity.y += gravity * delta

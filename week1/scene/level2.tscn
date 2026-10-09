@@ -9,6 +9,11 @@
 [ext_resource type="Script" path="res://scripts/chest.gd" id="7_xbww7"]
 [ext_resource type="PackedScene" path="res://scene/hud.tscn" id="8_l4tox"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="9_ggcsn"]
+[ext_resource type="PackedScene" path="res://scene/background.tscn" id="9_bg"]
+[ext_resource type="PackedScene" path="res://scene/heart_pickup.tscn" id="10_heart"]
+[ext_resource type="PackedScene" path="res://scene/sack_pickup.tscn" id="11_sack"]
+[ext_resource type="PackedScene" path="res://scene/enemy_mushroom.tscn" id="12_mushroom"]
+[ext_resource type="PackedScene" path="res://scene/campfire.tscn" id="13_campfire"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wp4xf"]
 texture = ExtResource("1_yilmc")
@@ -180,3 +185,18 @@ next_level = "res://scene/level3.tscn"
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=112689914 instance=ExtResource("8_l4tox")]
 script = ExtResource("9_ggcsn")
+
+[node name="Background" parent="." instance=ExtResource("9_bg")]
+
+[node name="HeartPickup" parent="." instance=ExtResource("10_heart")]
+position = Vector2(104, -10)
+
+[node name="SackPickup" parent="." instance=ExtResource("11_sack")]
+position = Vector2(72, 34)
+potions_per_enemy = 5
+
+[node name="EnemyMushroom" parent="." instance=ExtResource("12_mushroom")]
+position = Vector2(232, 36)
+
+[node name="Campfire" parent="." instance=ExtResource("13_campfire")]
+position = Vector2(-8, 48)

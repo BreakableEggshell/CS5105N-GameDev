@@ -8,10 +8,27 @@
 [ext_resource type="Script" uid="uid://bd8wl1lfn05pf" path="res://scripts/fall.gd" id="6_mbevu"]
 [ext_resource type="Script" uid="uid://bpohp3fklacng" path="res://scripts/throw.gd" id="7_throw"]
 [ext_resource type="Script" uid="uid://c2vlr8bdot2jt" path="res://scripts/player.gd" id="8_player"]
+[ext_resource type="Script" uid="uid://c3cpsevq113qj" path="res://scripts/hurt.gd" id="9_hurt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p3t0x"]
 atlas = ExtResource("1_3x35j")
 region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hurt0"]
+atlas = ExtResource("1_3x35j")
+region = Rect2(0, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hurt1"]
+atlas = ExtResource("1_3x35j")
+region = Rect2(32, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hurt2"]
+atlas = ExtResource("1_3x35j")
+region = Rect2(64, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hurt3"]
+atlas = ExtResource("1_3x35j")
+region = Rect2(96, 192, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k8rrn"]
 atlas = ExtResource("1_3x35j")
@@ -86,6 +103,23 @@ animations = [{
 "loop": 1,
 "name": &"fall",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hurt0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hurt1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hurt2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hurt3")
+}],
+"loop": 0,
+"name": &"hurt",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -185,3 +219,7 @@ script = ExtResource("6_mbevu")
 
 [node name="Throw" type="Node" parent="StateMachine" unique_id=754498347]
 script = ExtResource("7_throw")
+cooldown = null
+
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=316544430]
+script = ExtResource("9_hurt")

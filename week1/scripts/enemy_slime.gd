@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const DEATH_PARTICLES := preload("res://scene/slime_death.tscn")
+const DEATH_SOUND := preload("res://assets/music_sfx/enemy_death_sfx.mp3")
 
 @export var speed := 30.0
 @export var max_health := 3
@@ -35,13 +36,14 @@ func _physics_process(delta: float) -> void:
 
 	for body in hitbox.get_overlapping_bodies():
 		if body.is_in_group("player"):
-			body.take_damage(contact_damage)
+			body.take_damage(contact_damage, global_position)
 
 func _apply_direction() -> void:
 	sprite.flip_h = direction < 0.0
 	edge_ray.position.x = absf(edge_ray.position.x) * direction
 
-func take_damage(amount: int) -> void:
+## `_from_position` (where the hit came from) is accepted for consistency with other enemies but unused.
+func take_damage(amount: int, _from_position := Vector2.INF) -> void:
 	if health <= 0:
 		return
 	health -= amount
@@ -58,9 +60,11 @@ func _die() -> void:
 	set_deferred("collision_layer", 0)
 	hitbox.set_deferred("monitoring", false)
 	sprite.modulate = Color.WHITE
-	var particles := DEATH_PARTICLES.instantiate()
-	particles.position = position + Vector2(0, 8)  # same parent as the slime
-	get_parent().add_child.call_deferred(particles)
+	Sfx.play(DEATH_SOUND)
 	sprite.play("death")
 	await sprite.animation_finished
+	# Then crumble into dust as it disappears.
+	var particles := DEATH_PARTICLES.instantiate()
+	particles.position = position + Vector2(0, 6)  # same parent as the slime
+	get_parent().add_child(particles)
 	queue_free()

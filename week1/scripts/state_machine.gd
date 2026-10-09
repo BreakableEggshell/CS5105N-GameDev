@@ -35,6 +35,10 @@ func _physics_process(delta: float) -> void:
 	if current_state:
 		current_state.physics_update(delta)
 
+## Switch state from outside the states themselves (e.g. the player getting hurt).
+func change_state(new_state_name: StringName) -> void:
+	_on_transitioned(new_state_name)
+
 func _on_transitioned(new_state_name: StringName) -> void:
 	var new_state: State = states.get(new_state_name.to_lower())
 	if new_state == null or new_state == current_state:

@@ -1,0 +1,224 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_options"]
+[ext_resource type="FontFile" uid="uid://ceq1ddopypf7o" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="2_font"]
+[ext_resource type="FontFile" uid="uid://bmt5pdtvvql0y" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="3_bold"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_panel"]
+content_margin_left = 40.0
+content_margin_top = 32.0
+content_margin_right = 40.0
+content_margin_bottom = 32.0
+bg_color = Color(0.72, 0.5, 0.42, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.27, 0.19, 0.29, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_slider"]
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.27, 0.19, 0.29, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_fill"]
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(1, 0.96, 0.88, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_button"]
+content_margin_left = 24.0
+content_margin_top = 10.0
+content_margin_right = 24.0
+content_margin_bottom = 10.0
+bg_color = Color(0.82, 0.6, 0.5, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.27, 0.19, 0.29, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_button_hover"]
+content_margin_left = 24.0
+content_margin_top = 10.0
+content_margin_right = 24.0
+content_margin_bottom = 10.0
+bg_color = Color(0.92, 0.72, 0.62, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.96, 0.88, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_focus"]
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.96, 0.88, 1)
+expand_margin_left = 6.0
+expand_margin_top = 6.0
+expand_margin_right = 6.0
+expand_margin_bottom = 6.0
+
+[sub_resource type="Theme" id="Theme_options"]
+default_font = ExtResource("2_font")
+default_font_size = 24
+Button/colors/font_color = Color(1, 0.96, 0.88, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0.27, 0.19, 0.29, 1)
+Button/constants/outline_size = 8
+Button/styles/focus = SubResource("StyleBox_focus")
+Button/styles/hover = SubResource("StyleBox_button_hover")
+Button/styles/normal = SubResource("StyleBox_button")
+Button/styles/pressed = SubResource("StyleBox_button")
+CheckButton/colors/font_color = Color(1, 0.96, 0.88, 1)
+CheckButton/styles/focus = SubResource("StyleBox_focus")
+HSlider/styles/focus = SubResource("StyleBox_focus")
+HSlider/styles/grabber_area = SubResource("StyleBox_fill")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBox_fill")
+HSlider/styles/slider = SubResource("StyleBox_slider")
+Label/colors/font_color = Color(1, 0.96, 0.88, 1)
+Label/colors/font_outline_color = Color(0.27, 0.19, 0.29, 1)
+Label/constants/outline_size = 8
+PanelContainer/styles/panel = SubResource("StyleBox_panel")
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_options")
+script = ExtResource("1_options")
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -460.0
+offset_top = -220.0
+offset_right = 460.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="Title" type="Label" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bold")
+theme_override_font_sizes/font_size = 40
+theme_override_constants/outline_size = 12
+text = "Options"
+horizontal_alignment = 1
+
+[node name="Columns" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Left" type="VBoxContainer" parent="Panel/VBox/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="Header" type="Label" parent="Panel/VBox/Columns/Left"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bold")
+text = "Audio & Display"
+
+[node name="Grid" type="GridContainer" parent="Panel/VBox/Columns/Left"]
+layout_mode = 2
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 24
+columns = 2
+
+[node name="MusicLabel" type="Label" parent="Panel/VBox/Columns/Left/Grid"]
+layout_mode = 2
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="Panel/VBox/Columns/Left/Grid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="SfxLabel" type="Label" parent="Panel/VBox/Columns/Left/Grid"]
+layout_mode = 2
+text = "Sound FX"
+
+[node name="SfxSlider" type="HSlider" parent="Panel/VBox/Columns/Left/Grid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="FullscreenLabel" type="Label" parent="Panel/VBox/Columns/Left/Grid"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="FullscreenCheck" type="CheckButton" parent="Panel/VBox/Columns/Left/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Divider" type="ColorRect" parent="Panel/VBox/Columns"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+color = Color(0.27, 0.19, 0.29, 1)
+
+[node name="Right" type="VBoxContainer" parent="Panel/VBox/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="Header" type="Label" parent="Panel/VBox/Columns/Right"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bold")
+text = "Controls"
+
+[node name="ControlsGrid" type="GridContainer" parent="Panel/VBox/Columns/Right"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="Buttons" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="ResetButton" type="Button" parent="Panel/VBox/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset Controls"
+
+[node name="BackButton" type="Button" parent="Panel/VBox/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Back"

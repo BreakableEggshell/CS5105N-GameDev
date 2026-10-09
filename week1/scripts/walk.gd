@@ -1,6 +1,8 @@
 extends State
 
-const SPEED := 150.0
+const SPEED := 120.0
+## Horizontal speed while jumping/falling: a little faster than walking so jumps don't feel sluggish.
+const AIR_SPEED := SPEED * 1.25
 
 func enter() -> void:
 	print("Walk State")

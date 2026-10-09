@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/tombstone.gd" id="1_tomb"]
+[ext_resource type="Texture2D" uid="uid://yg5nt4v6sdrq" path="res://assets/tombstone.png" id="2_tex"]
+
+[node name="Tombstone" type="Node2D"]
+z_index = -1
+script = ExtResource("1_tomb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-11, -22)
+texture = ExtResource("2_tex")
+centered = false

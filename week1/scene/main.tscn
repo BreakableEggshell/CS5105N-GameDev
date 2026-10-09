@@ -5,6 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://bm2oh8egcv15e" path="res://scene/enemy_slime.tscn" id="2_wp4xf"]
 [ext_resource type="PackedScene" path="res://scene/hud.tscn" id="3_hud"]
 [ext_resource type="PackedScene" path="res://scene/chest.tscn" id="4_chest"]
+[ext_resource type="PackedScene" path="res://scene/sack_pickup.tscn" id="8_b5f6u"]
+[ext_resource type="PackedScene" path="res://scene/background.tscn" id="9_bg"]
+[ext_resource type="PackedScene" path="res://scene/heart_pickup.tscn" id="10_heart"]
+[ext_resource type="PackedScene" path="res://scene/campfire.tscn" id="13_campfire"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wp4xf"]
 texture = ExtResource("2_v0l8b")
@@ -143,20 +147,32 @@ sources/0 = SubResource("TileSetAtlasSource_wp4xf")
 [node name="Main" type="Node2D" unique_id=326090131]
 
 [node name="CharacterBody2D" parent="." unique_id=1548181906 instance=ExtResource("1_itxqv")]
-position = Vector2(-2, 37)
+position = Vector2(-56, 37)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=906493967]
 zoom = Vector2(4, 4)
 
 [node name="enemy_slime" parent="." unique_id=1687570845 instance=ExtResource("2_wp4xf")]
-position = Vector2(216, 36)
+position = Vector2(200, 36)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=475294037]
-tile_map_data = PackedByteArray("AAD8/wMAAAAAAAAAAAD9/wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAJAAMAAAAAAAEAAAAKAAMAAAAAAAEAAAACAAMAAAAJAAAAAAADAAMAAAAKAAAAAAAEAAMAAAALAAAAAAAGAAAAAAAAAAEAAAAGAP//AAAAAAEAAAAGAP7/AAAAAAEAAAAGAP3/AAAAAAEAAAAGAPz/AAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAFAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAADAP7/AAAAAAAAAAALAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAANAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAQAAIAAAAAAAAAAAARAAIAAAAAAAAAAAATAAEAAAAAAAAAAAASAAEAAAAAAAAAAAAUAAEAAAAAAAAAAAAKAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAALAAMAAAAAAAEAAAAPAAMAAAAAAAEAAAAQAAMAAAAAAAEAAAARAAMAAAAAAAEAAAASAAMAAAAAAAEAAAATAAMAAAAAAAEAAAAUAAMAAAAAAAEAAAAUAAIAAAAAAAEAAAATAAIAAAAAAAEAAAASAAIAAAAAAAEAAAA=")
+tile_map_data = PackedByteArray("AAD8/wMAAAAAAAAAAAD9/wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAGAAAA//////////8GAP////////////8GAP7///////////8GAP3///////////8GAPz///////////8DAAAA//////////8CAAAA//////////8BAAAA//////////8FAP7///////////8EAP7///////////8DAP7///////////8LAAIA//////////8MAAMAAAAAAAAAAAANAAMAAAAAAAAAAAAOAAMAAAAAAAAAAAAPAAIA//////////8QAAIAAAAAAAAAAAARAAIA//////////8TAAEA//////////8SAAEA//////////8UAAEA//////////8KAAIA//////////8JAAIA//////////8LAAMAAAAAAAAAAAAPAAMAAAAAAAAAAAAQAAMAAAAAAAAAAAARAAMAAAAAAAAAAAASAAMAAAAAAAAAAAATAAMAAAAAAAAAAAAUAAMAAAAAAAAAAAAUAAIA//////////8TAAIA//////////8SAAIA///////////6/wMAAAAAAAAAAAD7/wMAAAAAAAAAAAAIAAIAAAAAAAAAAAAVAAMAAAAJAAAAAAAWAAMAAAAKAAAAAAAXAAMAAAAKAAAAAAAYAAMAAAALAAAAAAAZAAMAAAAAAAAAAAAaAAMAAAAAAAAAAAAbAAMAAAAAAAAAAAAcAAMAAAAAAAAAAAAdAAMAAAAAAAAAAAAeAAMAAAAAAAAAAAAfAAMAAAAAAAAAAAAgAAMAAAAAAAEAAAAhAAMAAAAAAAEAAAAiAAMAAAAAAAEAAAAjAAMAAAAAAAEAAAAkAAMAAAAAAAEAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAgAAIAAAAAAAAAAAAhAAIAAAAAAAAAAAAiAAIAAAAAAAEAAAAjAAIAAAAAAAEAAAAkAAIAAAAAAAEAAAAiAAEAAAAAAAAAAAAjAAEAAAAAAAAAAAAkAAEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_itxqv")
 
-[node name="Chest" parent="." instance=ExtResource("4_chest")]
-position = Vector2(312, 16)
+[node name="Chest" parent="." unique_id=1803645738 instance=ExtResource("4_chest")]
+position = Vector2(568, 16)
 next_level = "res://scene/level2.tscn"
 
-[node name="HUD" parent="." instance=ExtResource("3_hud")]
+[node name="HUD" parent="." unique_id=1733553455 instance=ExtResource("3_hud")]
+
+[node name="Background" parent="." unique_id=1126874907 instance=ExtResource("9_bg")]
+
+[node name="HeartPickup" parent="." unique_id=2071538549 instance=ExtResource("10_heart")]
+position = Vector2(456, -10)
+
+[node name="SackPickup" type="Area2D" parent="." unique_id=1059558186 instance=ExtResource("8_b5f6u")]
+position = Vector2(8, 34)
+amount = 10
+
+[node name="Campfire" parent="." instance=ExtResource("13_campfire")]
+position = Vector2(-72, 48)
