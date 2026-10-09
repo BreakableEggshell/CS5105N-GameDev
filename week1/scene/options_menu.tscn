@@ -110,10 +110,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -280.0
-offset_top = -200.0
-offset_right = 280.0
-offset_bottom = 200.0
+offset_left = -460.0
+offset_top = -220.0
+offset_right = 460.0
+offset_bottom = 220.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -129,19 +129,33 @@ theme_override_constants/outline_size = 12
 text = "Options"
 horizontal_alignment = 1
 
-[node name="Grid" type="GridContainer" parent="Panel/VBox"]
+[node name="Columns" type="HBoxContainer" parent="Panel/VBox"]
 layout_mode = 2
-theme_override_constants/h_separation = 32
+theme_override_constants/separation = 40
+
+[node name="Left" type="VBoxContainer" parent="Panel/VBox/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="Header" type="Label" parent="Panel/VBox/Columns/Left"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bold")
+text = "Audio & Display"
+
+[node name="Grid" type="GridContainer" parent="Panel/VBox/Columns/Left"]
+layout_mode = 2
+theme_override_constants/h_separation = 24
 theme_override_constants/v_separation = 24
 columns = 2
 
-[node name="MusicLabel" type="Label" parent="Panel/VBox/Grid"]
+[node name="MusicLabel" type="Label" parent="Panel/VBox/Columns/Left/Grid"]
 layout_mode = 2
 text = "Music"
 
-[node name="MusicSlider" type="HSlider" parent="Panel/VBox/Grid"]
+[node name="MusicSlider" type="HSlider" parent="Panel/VBox/Columns/Left/Grid"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(280, 24)
+custom_minimum_size = Vector2(200, 24)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -149,13 +163,13 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 
-[node name="SfxLabel" type="Label" parent="Panel/VBox/Grid"]
+[node name="SfxLabel" type="Label" parent="Panel/VBox/Columns/Left/Grid"]
 layout_mode = 2
 text = "Sound FX"
 
-[node name="SfxSlider" type="HSlider" parent="Panel/VBox/Grid"]
+[node name="SfxSlider" type="HSlider" parent="Panel/VBox/Columns/Left/Grid"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(280, 24)
+custom_minimum_size = Vector2(200, 24)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -163,17 +177,48 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 
-[node name="FullscreenLabel" type="Label" parent="Panel/VBox/Grid"]
+[node name="FullscreenLabel" type="Label" parent="Panel/VBox/Columns/Left/Grid"]
 layout_mode = 2
 text = "Fullscreen"
 
-[node name="FullscreenCheck" type="CheckButton" parent="Panel/VBox/Grid"]
+[node name="FullscreenCheck" type="CheckButton" parent="Panel/VBox/Columns/Left/Grid"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="BackButton" type="Button" parent="Panel/VBox"]
+[node name="Divider" type="ColorRect" parent="Panel/VBox/Columns"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+color = Color(0.27, 0.19, 0.29, 1)
+
+[node name="Right" type="VBoxContainer" parent="Panel/VBox/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="Header" type="Label" parent="Panel/VBox/Columns/Right"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bold")
+text = "Controls"
+
+[node name="ControlsGrid" type="GridContainer" parent="Panel/VBox/Columns/Right"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="Buttons" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="ResetButton" type="Button" parent="Panel/VBox/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset Controls"
+
+[node name="BackButton" type="Button" parent="Panel/VBox/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
 text = "Back"

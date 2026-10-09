@@ -3,8 +3,8 @@ extends CharacterBody2D
 signal health_changed(health: int)
 signal died
 
-## 10 health = 5 hearts (each heart is 2 health, so 1 damage = half a heart).
-@export var max_health := 10
+## 6 health = 3 hearts (each heart is 2 health, so 1 damage = half a heart).
+@export var max_health := 6
 ## Seconds of invincibility after being hit.
 @export var invincible_time := 1.0
 

@@ -24,6 +24,7 @@ func enter() -> void:
 	# Add to the level, not the player, so the potion doesn't move with the player.
 	actor.get_parent().add_child(potion)
 	potion.global_position = actor.global_position + SPAWN_OFFSET * dir
+	Tutorial.register_throw()
 
 func physics_update(delta: float) -> void:
 	actor.velocity.y += gravity * delta

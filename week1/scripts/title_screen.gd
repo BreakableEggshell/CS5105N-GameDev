@@ -29,6 +29,7 @@ func _set_tint(button: TextureButton, tint: Color) -> void:
 	button.modulate = tint
 
 func _on_start_pressed() -> void:
+	Tutorial.start()
 	get_tree().change_scene_to_file(FIRST_LEVEL)
 
 func _on_options_pressed() -> void:
