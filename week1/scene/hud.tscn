@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cysrq1ymjw564" path="res://scene/health_heart.tscn" id="2_heart"]
 [ext_resource type="Texture2D" uid="uid://4s6jfg12nntu" path="res://assets/green_round.png" id="3_potion"]
 [ext_resource type="FontFile" uid="uid://ceq1ddopypf7o" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="4_font"]
+[ext_resource type="PackedScene" path="res://scene/pause_menu.tscn" id="5_pause"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_hud")
@@ -43,3 +44,5 @@ theme_override_fonts/font = ExtResource("4_font")
 theme_override_font_sizes/font_size = 16
 text = "0.5"
 vertical_alignment = 1
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_pause")]

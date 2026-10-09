@@ -5,6 +5,8 @@
 [ext_resource type="FontFile" uid="uid://bmt5pdtvvql0y" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="3_font"]
 [ext_resource type="Texture2D" uid="uid://dtppdlmxqi2fd" path="res://assets/start_btn.png" id="4_start"]
 [ext_resource type="Texture2D" uid="uid://dk2ydin12mu36" path="res://assets/option_btn.png" id="5_options"]
+[ext_resource type="PackedScene" path="res://scene/options_menu.tscn" id="20_options"]
+[ext_resource type="Texture2D" uid="uid://cn15rf0k43s3m" path="res://assets/exit_btn.png" id="21_exit"]
 
 [sub_resource type="FontVariation" id="FontVariation_bold"]
 base_font = ExtResource("3_font")
@@ -69,3 +71,14 @@ size_flags_horizontal = 4
 texture_normal = ExtResource("5_options")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="ExitButton" type="TextureButton" parent="UI/Menu"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(205, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("21_exit")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="OptionsMenu" parent="UI" instance=ExtResource("20_options")]
