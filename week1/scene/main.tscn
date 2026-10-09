@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bm2oh8egcv15e" path="res://scene/enemy_slime.tscn" id="2_wp4xf"]
 [ext_resource type="PackedScene" path="res://scene/hud.tscn" id="3_hud"]
 [ext_resource type="PackedScene" path="res://scene/chest.tscn" id="4_chest"]
+[ext_resource type="PackedScene" path="res://scene/background.tscn" id="9_bg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wp4xf"]
 texture = ExtResource("2_v0l8b")
@@ -160,3 +161,5 @@ position = Vector2(312, 16)
 next_level = "res://scene/level2.tscn"
 
 [node name="HUD" parent="." instance=ExtResource("3_hud")]
+
+[node name="Background" parent="." instance=ExtResource("9_bg")]

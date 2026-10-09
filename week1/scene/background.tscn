@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/background.gd" id="1_bg"]
+[ext_resource type="Texture2D" uid="uid://b0bdedae7h7wb" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_tiles"]
+
+[node name="Background" type="Node2D"]
+z_index = -100
+script = ExtResource("1_bg")
+tileset = ExtResource("2_tiles")
