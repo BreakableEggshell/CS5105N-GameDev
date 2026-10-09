@@ -76,6 +76,44 @@ hurt, and a restart (R) option.
 
 ![alt text](/readme_screenshots/week6_mushroom.gif)
 
+### AI-assisted work
+
+The mushroom's FSM script was drafted by an AI coding assistant (Claude Code)
+from my description of the behavior. Changes made after testing:
+
+- **Fixed detection**: the line-of-sight ray aimed above the player's hitbox, so
+  the mushroom never spotted the player. It now aims at the hitbox centers.
+- **Added an attack cooldown**: it re-attacked the instant its stun ended, so it
+  now waits 1 second before it can spot the player again.
+- **Longer wind-up**: the launch came too fast to react to, so it now holds its
+  wind-up pose for an extra 0.4 seconds.
+- **Turns when hit from behind**: added so it can't be attacked freely from
+  behind.
+
+## Week 7
+
+Polish pass on combat and death:
+
+- **Hit-stop**: when the mushroom's headbutt lands, the whole game freezes for a
+  split second (`Engine.time_scale`) before the knockback, so the hit feels
+  heavy.
+- **Death and respawn**: the knight collapses, a tombstone drops in with a
+  tweened bounce where they died, and an iris transition (a circle shader on a
+  `CanvasLayer`) closes in on them. The level reloads and the iris opens again
+  at the level's campfire spawn point.
+- **Tombstones persist**: tombstones from earlier deaths stay in the level across
+  respawns and restarts, until the player reaches the next level.
+- **Tweened feedback**: picking up a potion sack shows a floating "+N" that rises
+  and fades.
+
+![alt text](/readme_screenshots/week7_juice.gif)
+
+Added save/load: the level the player has reached is written to
+`user://savegame.cfg` (`ConfigFile`) every time a level starts, so progress
+persists after closing the game. When a save exists, a **Continue** button
+appears on the title screen and loads the saved level. **Start** begins a new
+game from level 1.
+
 ## Credits
 
 **Music**
