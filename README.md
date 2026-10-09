@@ -44,3 +44,33 @@ puff of dust kicks out from both sides of their feet, and when a slime dies, it
 bursts into a splash of green goo while its death animation plays.
 
 ![alt text](/readme_screenshots/week4_particles.gif)
+
+## Week 5
+
+Added a title screen (Start / Options / Exit) and a pause menu (Esc), with an
+Options panel for music and SFX volume, fullscreen, and key rebinding. Added
+background music and sound effects, routed through separate Music and SFX
+audio buses. A short tutorial hint teaches the potion throw when the game
+starts.
+
+![alt text](/readme_screenshots/week5_menus.gif)
+
+## Credits
+
+**Music**
+- Mexico Loop by Tim Beek
+
+**Sound Effects**
+- Chest open, enemy death, and HP recovery sounds from [Sound Effect Lab](https://soundeffect-lab.info/)
+
+**Sprites**
+- [Brackeys' Platformer Bundle](https://brackeysgames.itch.io/brackeys-platformer-bundle) by Brackeys (CC0)
+  - Knight and slime by [analogStudios_](https://analogstudios.itch.io/)
+  - World tileset by [RottingPixels](https://rottingpixels.itch.io/four-seasons-platformer-tileset-16x16free)
+- [90 Free 16x16 Pixel Art Potions](https://alexkovacsart.itch.io/90-free-16x16-pixel-art-potions) by alexkovacsart
+- [Animated HUD Pixel RPG](https://snoblin.itch.io/animated-hud-pixel-rpg) (hearts) by Snoblin
+- [Sprout Lands Asset Pack](https://cupnooble.itch.io/sprout-lands-asset-pack) (chest) by Cup Nooble
+- Menu buttons and pause/play icon made for this project
+
+**Font**
+- [Pixel Operator](https://www.dafont.com/pixel-operator.font) by Jayvee Enaguas (HarvettFox96), included in the Brackeys bundle
