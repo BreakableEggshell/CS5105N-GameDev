@@ -165,5 +165,5 @@ next_level = "res://scene/level2.tscn"
 
 [node name="Background" parent="." unique_id=1126874907 instance=ExtResource("9_bg")]
 
-[node name="HeartPickup" parent="." instance=ExtResource("10_heart")]
+[node name="HeartPickup" parent="." unique_id=2071538549 instance=ExtResource("10_heart")]
 position = Vector2(72, -42)

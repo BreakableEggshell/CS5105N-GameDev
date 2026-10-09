@@ -1,6 +1,9 @@
 extends Area2D
 
 const SMASH := preload("res://scene/potion_smash.tscn")
+const BREAK_SOUND := preload("res://assets/music_sfx/glass_break.mp3")
+## The glass break is harsh at full volume, so it's played quieter than other sounds.
+const BREAK_VOLUME_DB := -14.0
 
 ## Forward speed of the throw.
 @export var speed := 200.0
@@ -44,6 +47,7 @@ func _on_body_entered(body: Node) -> void:
 
 func smash() -> void:
 	smashed = true
+	Sfx.play(BREAK_SOUND, BREAK_VOLUME_DB)
 	var particles := SMASH.instantiate()
 	particles.position = position  # same parent as the potion
 	get_parent().add_child.call_deferred(particles)
