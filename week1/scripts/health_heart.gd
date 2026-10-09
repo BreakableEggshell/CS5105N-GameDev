@@ -19,7 +19,8 @@ func set_value(new_value: int) -> void:
 	_show_value()
 
 func _show_value() -> void:
+	# Hidden rather than freed when empty, so healing can bring it back.
+	visible = value > 0
 	match value:
 		2: sprite.play("full")
 		1: sprite.play("half")
-		_: queue_free()

@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" path="res://scene/hud.tscn" id="8_l4tox"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="9_ggcsn"]
 [ext_resource type="PackedScene" path="res://scene/background.tscn" id="9_bg"]
+[ext_resource type="PackedScene" path="res://scene/heart_pickup.tscn" id="10_heart"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wp4xf"]
 texture = ExtResource("1_yilmc")
@@ -183,3 +184,6 @@ next_level = "res://scene/level3.tscn"
 script = ExtResource("9_ggcsn")
 
 [node name="Background" parent="." instance=ExtResource("9_bg")]
+
+[node name="HeartPickup" parent="." instance=ExtResource("10_heart")]
+position = Vector2(104, -10)

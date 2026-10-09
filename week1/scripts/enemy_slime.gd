@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const DEATH_PARTICLES := preload("res://scene/slime_death.tscn")
+const DEATH_SOUND := preload("res://assets/music_sfx/enemy_death_sfx.mp3")
 
 @export var speed := 30.0
 @export var max_health := 3
@@ -61,6 +62,7 @@ func _die() -> void:
 	var particles := DEATH_PARTICLES.instantiate()
 	particles.position = position + Vector2(0, 8)  # same parent as the slime
 	get_parent().add_child.call_deferred(particles)
+	Sfx.play(DEATH_SOUND)
 	sprite.play("death")
 	await sprite.animation_finished
 	queue_free()

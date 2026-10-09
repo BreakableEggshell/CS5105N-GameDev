@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" path="res://scene/hud.tscn" id="3_hud"]
 [ext_resource type="PackedScene" path="res://scene/chest.tscn" id="4_chest"]
 [ext_resource type="PackedScene" path="res://scene/background.tscn" id="9_bg"]
+[ext_resource type="PackedScene" path="res://scene/heart_pickup.tscn" id="10_heart"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wp4xf"]
 texture = ExtResource("2_v0l8b")
@@ -163,3 +164,6 @@ next_level = "res://scene/level2.tscn"
 [node name="HUD" parent="." unique_id=1733553455 instance=ExtResource("3_hud")]
 
 [node name="Background" parent="." unique_id=1126874907 instance=ExtResource("9_bg")]
+
+[node name="HeartPickup" parent="." instance=ExtResource("10_heart")]
+position = Vector2(72, -42)

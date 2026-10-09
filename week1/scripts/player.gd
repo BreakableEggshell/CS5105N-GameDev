@@ -49,6 +49,14 @@ func take_damage(amount: int) -> void:
 	else:
 		_flash()
 
+## Restores health, capped at max_health. Returns false if already full (nothing healed).
+func heal(amount: int) -> bool:
+	if health <= 0 or health >= max_health:
+		return false
+	health = mini(health + amount, max_health)
+	health_changed.emit(health)
+	return true
+
 func _flash() -> void:
 	var tween := create_tween().set_loops(int(invincible_time / 0.2))
 	tween.tween_property(sprite, "modulate:a", 0.3, 0.1)
