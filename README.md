@@ -76,20 +76,6 @@ hurt, and a restart (R) option.
 
 ![alt text](/readme_screenshots/week6_mushroom.gif)
 
-### AI-assisted work
-
-The mushroom's FSM script was drafted by an AI coding assistant (Claude Code)
-from my description of the behavior. Changes made after testing:
-
-- **Fixed detection**: the line-of-sight ray aimed above the player's hitbox, so
-  the mushroom never spotted the player. It now aims at the hitbox centers.
-- **Added an attack cooldown**: it re-attacked the instant its stun ended, so it
-  now waits 1 second before it can spot the player again.
-- **Longer wind-up**: the launch came too fast to react to, so it now holds its
-  wind-up pose for an extra 0.4 seconds.
-- **Turns when hit from behind**: added so it can't be attacked freely from
-  behind.
-
 ## Credits
 
 **Music**
