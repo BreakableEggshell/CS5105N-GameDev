@@ -1,0 +1,44 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/potion_smash.gd" id="1_burst"]
+
+[sub_resource type="Gradient" id="Gradient_dust"]
+offsets = PackedFloat32Array(0, 1)
+colors = PackedColorArray(0.85, 0.8, 0.7, 0.9, 0.85, 0.8, 0.7, 0)
+
+[node name="LandingDust" type="Node2D"]
+script = ExtResource("1_burst")
+
+[node name="Left" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 4
+lifetime = 0.35
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(-1, -0.4)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 25.0
+initial_velocity_max = 45.0
+damping_min = 60.0
+damping_max = 90.0
+scale_amount_min = 1.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_dust")
+
+[node name="Right" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 4
+lifetime = 0.35
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(1, -0.4)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 25.0
+initial_velocity_max = 45.0
+damping_min = 60.0
+damping_max = 90.0
+scale_amount_min = 1.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_dust")

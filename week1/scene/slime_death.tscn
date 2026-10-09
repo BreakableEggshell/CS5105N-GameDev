@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/potion_smash.gd" id="1_burst"]
+
+[sub_resource type="Gradient" id="Gradient_goo"]
+offsets = PackedFloat32Array(0, 0.6, 1)
+colors = PackedColorArray(0.75, 0.95, 0.3, 1, 0.55, 0.8, 0.2, 1, 0.4, 0.65, 0.15, 0)
+
+[node name="SlimeDeath" type="Node2D"]
+script = ExtResource("1_burst")
+
+[node name="Goo" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 14
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 70.0
+gravity = Vector2(0, 400)
+initial_velocity_min = 40.0
+initial_velocity_max = 100.0
+scale_amount_min = 1.0
+scale_amount_max = 2.5
+color_ramp = SubResource("Gradient_goo")

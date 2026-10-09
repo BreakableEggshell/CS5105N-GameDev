@@ -36,3 +36,11 @@ Added a chest that opens when touched and loads the next level, plus 2 new
 levels for a total of 3.
 
 ![alt text](/readme_screenshots/week3_levels.gif)
+
+## Week 4
+
+Added small particle effects using `CPUParticles2D`. When the player lands, a
+puff of dust kicks out from both sides of their feet, and when a slime dies, it
+bursts into a splash of green goo while its death animation plays.
+
+![alt text](/readme_screenshots/week4_particles.gif)
