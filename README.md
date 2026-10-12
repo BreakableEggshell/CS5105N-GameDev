@@ -134,6 +134,18 @@ also use a web-safe lookup, since browsers can't report the keyboard layout.
 
 ![alt text](/readme_screenshots/week8_web.jpg)
 
+### Team Git practice
+
+- **Branches**: day-to-day work happens on `develop`, and `main` holds the
+  merged versions.
+- **Pull request**: merged `develop` into `main` through
+  [pull request #5](https://github.com/BreakableEggshell/CS5105N-GameDev/pull/5).
+- **Merge conflict**: the README was edited locally (adding Week 7) and on
+  GitHub (adjusting Week 6) at the same time, so pulling caused a conflict in
+  `README.md`. I resolved it in VS Code and finished the merge (commit
+  `75deff4`). The resolution had dropped the Week 7 section, so I restored it
+  from the earlier commit (`726a0d4`).
+
 ## Credits
 
 **Music**
