@@ -114,6 +114,38 @@ persists after closing the game. When a save exists, a **Continue** button
 appears on the title screen and loads the saved level. **Start** begins a new
 game from level 1.
 
+## Week 8
+
+Exported the game to two platforms with Godot's export templates (presets in
+`week1/export_presets.cfg`):
+
+- **Windows**: a single `.exe` with the game data embedded. It runs on D3D12
+  with the Forward+ renderer. Download `builds/PotionKnight-windows.zip`, unzip
+  it, and run `PotionKnight.exe`.
+- **Web**: an HTML5 build in `builds/web/`. The web only supports Godot's
+  Compatibility renderer (WebGL 2), so the project switches to it on web only.
+  Thread support is off, so it runs on hosts like itch.io and GitHub Pages
+  without special server headers. To play locally, serve the folder (for
+  example `python -m http.server` inside `builds/web`) and open it in a browser.
+
+**Platform-specific tweak:** on the web build, the title screen hides the Exit
+button (a game can't close a browser tab). Key names in the hints and Options
+also use a web-safe lookup, since browsers can't report the keyboard layout.
+
+![alt text](/readme_screenshots/week8_web.jpg)
+
+### Team Git practice
+
+- **Branches**: day-to-day work happens on `develop`, and `main` holds the
+  merged versions.
+- **Pull request**: merged `develop` into `main` through
+  [pull request #5](https://github.com/BreakableEggshell/CS5105N-GameDev/pull/5).
+- **Merge conflict**: the README was edited locally (adding Week 7) and on
+  GitHub (adjusting Week 6) at the same time, so pulling caused a conflict in
+  `README.md`. I resolved it in VS Code and finished the merge (commit
+  `75deff4`). The resolution had dropped the Week 7 section, so I restored it
+  from the earlier commit (`726a0d4`).
+
 ## Credits
 
 **Music**
