@@ -26,6 +26,8 @@ func _ready() -> void:
 		button.button_up.connect(_set_tint.bind(button, HOVER_TINT))
 	# Continue only appears when there's saved progress.
 	continue_button.visible = SaveGame.has_save()
+	# Web build: the game can't close a browser tab, so there's no Exit.
+	exit_button.visible = not OS.has_feature("web")
 	# Lets keyboard players press Enter/Space right away.
 	if continue_button.visible:
 		continue_button.grab_focus()

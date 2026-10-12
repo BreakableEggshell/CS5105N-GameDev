@@ -61,6 +61,9 @@ func get_keys(action: StringName) -> Array[int]:
 
 ## Display name for a physical key on the player's keyboard layout (e.g. "W", "Space").
 func key_name(physical_keycode: int) -> String:
+	# The web build can't look up the keyboard layout; use the key's QWERTY name there.
+	if OS.has_feature("web"):
+		return OS.get_keycode_string(physical_keycode)
 	var keycode := DisplayServer.keyboard_get_keycode_from_physical(physical_keycode)
 	return OS.get_keycode_string(keycode if keycode != KEY_NONE else physical_keycode)
 
